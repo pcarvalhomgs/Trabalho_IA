@@ -1,0 +1,26 @@
+# No linux (instalar Tkinter do python):
+    sudo apt update
+    sudo apt install python3-tk
+
+# Crie um ambiente virtual na maquina: 
+    sudo apt install python3.10-venv
+    python -m venv venv
+
+# Ative o ambiente:
+    source venv/bin/activate
+
+# Selecione o interpretador do ambiente virtual para executar o codigo.
+    selecione o interpretador 'venv' na 'paleta de comandos' em 'view' no vscode.
+
+# Instale as dependencias normalmente:
+    pip install <dependencias>
+
+# Gere o requirements.txt:
+    pip freeze > requirements.txt
+
+# Leve seu código + requirements.txt para a nova máquina (ex: via Git, pendrive, etc.):
+    -Na nova máquina, crie um novo ambiente e instale as dependências:
+        python -m venv venv
+        source venv/bin/activate 
+        pip install -r requirements.txt
+
