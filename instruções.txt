@@ -2,12 +2,13 @@
     sudo apt update
     sudo apt install python3-tk
 
-# Crie um ambiente virtual na maquina: 
-    sudo apt install python3.10-venv
+# Crie um ambiente virtual na maquina (linux): 
+    sudo apt install python3.10-venv (linux)
     python -m venv venv
 
+
 # Ative o ambiente:
-    source venv/bin/activate
+    source venv/bin/activate 
 
 # Selecione o interpretador do ambiente virtual para executar o codigo.
     selecione o interpretador 'venv' na 'paleta de comandos' em 'view' no vscode.
@@ -24,4 +25,4 @@
         source venv/bin/activate 
         pip install -r requirements.txt
 
-# asdfasd
+
