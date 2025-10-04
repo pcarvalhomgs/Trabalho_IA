@@ -100,7 +100,8 @@ def escolher_algoritmo(estado_inicial):
 
                 print("\nOrdem de Exploração Busca Gulosa:\n")
                 for i, (estado, prof, heur) in enumerate(ordem_exploracao):
-                    print(f"Passo {i} (nível {prof}) (heurística: {heur}):\n{np.array(estado)}\n")
+                    print(f"Passo {i} | nível={prof} | h={heur}")
+                    print(np.array(estado), "\n")
 
                 print(f'Estados analisados: {estados_analisados}\nEstados na fronteira: {len(fila)}\nProfundidade da solução: {profundidade}\n')
                 print("Caminho da solução:", " -> ".join(caminho))
@@ -124,7 +125,8 @@ def escolher_algoritmo(estado_inicial):
 
                 print("\nOrdem de Exploração A*...:\n")
                 for i, (estado, prof, f) in enumerate(ordem_exploracao):
-                    print(f"Passo {i} (nível {prof}) (f=(g+h): {f}):\n{np.array(estado)}\n")
+                    print(f"Passo {i} | nível={prof} | f=g+h={f}")
+                    print(np.array(estado), "\n")
 
                 print(f'Estados analisados: {estados_analisados}\nEstados na fronteira: {len(fila)}\nProfundidade da solução: {profundidade}\n')
                 print("Caminho da solução:", " -> ".join(caminho))
