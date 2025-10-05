@@ -1,4 +1,3 @@
-# gui_8puzzle.py
 import threading
 import queue
 import tkinter as tk
@@ -11,11 +10,9 @@ from IA_Bgulosa import busca_gulosa
 from IA_Aestrela import a_estrela
 
 # --- Parâmetros ---
-ANIM_MS = 500  # 1 segundo entre passos na animação (conforme pedido)
+ANIM_MS = 500  # tempo entre passos na animação
 objetivo = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
 
-# Reutilizamos algumas funções do seu módulo original:
-# Você pode copiar/colar eh_solucionavel/conta_inversoes aqui ou importar se estiver em outro módulo.
 def conta_inversoes(estado):
     lista = [num for linha in estado for num in linha if num != 0]
     inversoes = 0
@@ -44,7 +41,7 @@ class MainGUI:
         entradas_frame = ttk.LabelFrame(top, text="Estado inicial (digite 3 números por linha, use 0 para o vazio)")
         entradas_frame.pack(side="left", padx=8, pady=4)
 
-        # 🔹 Criação do tabuleiro 3x3 interativo
+        # Criação do tabuleiro 3x3 interativo
         self.tabuleiro_entries = []
         for i in range(3):
             for j in range(3):
@@ -313,14 +310,10 @@ class AnimWindow:
                 lbl.grid(row=i, column=j, padx=4, pady=4)
                 self.tiles[i][j] = lbl
 
-        # topo: mostra movimentos (caminho)
-        # ttk.Label(left, text="Movimentos (caminho):").pack()
-        # self.lbl_moves = tk.Label(left, text=" -> ".join(caminho_movimentos), wraplength=220, justify="left")
-        # self.lbl_moves.pack(pady=(2,8))
 
         # botões de controle
         ctrl = ttk.Frame(left)
-        ctrl.pack(pady=4)
+        ctrl.pack(pady=20)
         self.btn_play = ttk.Button(ctrl, text="▶ Iniciar/Continuar", command=self.play)
         self.btn_play.grid(row=2, column=0, padx=4)
         self.btn_pause = ttk.Button(ctrl, text="⏸ Pausar", command=self.pause, state="disabled")
