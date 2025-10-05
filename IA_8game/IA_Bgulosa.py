@@ -50,10 +50,7 @@ def busca_gulosa(estado_inicial, objetivo):
     ordem_exploracao = [] # guarda a ordem de busca da BuscaGulosa
 
     niveis = defaultdict(list)  # Armazena os estados por nível
-    niveis[0].append((estado_inicial, distancia_manhattan(estado_inicial)))
-
-    # mantém o elemento com menor valor de heuristica sempre no topo.
-    #prioridade.heappush(fila_prioridade, (0, 0, estado_inicial, [], [(estado_inicial, 0)])) # (heuristica, profundidade, estado, caminho_gerado, caminho_estados)
+    niveis[0].append((estado_inicial, 0))
 
     while fila_prioridade:
         heuristica, profundidade, estado_atual, caminho, caminho_estados = prioridade.heappop(fila_prioridade)

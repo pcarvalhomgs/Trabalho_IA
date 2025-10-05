@@ -94,11 +94,8 @@ def escolher_algoritmo(estado_inicial):
     #3##
         elif opcao == "3":
             print("\nExecutando Busca Gulosa...")
-            if eh_solucionavel(estado_inicial):
-                niveis_Gula, ordem_exploracao, estados_analisados, fila, profundidade, caminho, caminho_estados = busca_gulosa(estado_inicial, objetivo)
-                exibir_resultados_heuristicas('Busca Gulosa', niveis_Gula, ordem_exploracao, estados_analisados, fila, profundidade, caminho, caminho_estados)
-            else:
-                print("Estado inicial é insolucionável.")
+            niveis_Gula, ordem_exploracao, estados_analisados, fila, profundidade, caminho, caminho_estados = busca_gulosa(estado_inicial, objetivo)
+            exibir_resultados_heuristicas('Busca Gulosa', niveis_Gula, ordem_exploracao, estados_analisados, fila, profundidade, caminho, caminho_estados)
     #4##
         elif opcao == "4":
             print("\nExecutando Busca A*...")

@@ -51,7 +51,7 @@ def a_estrela(estado_inicial, objetivo):
     ordem_exploracao = [] # guarda a ordem de busca da BuscaGulosa
 
     niveis = defaultdict(list)  # Armazena os estados por nível
-    niveis[0].append((estado_inicial, distancia_manhattan(estado_inicial)))
+    niveis[0].append((estado_inicial, 0))
 
     while fila_prioridade:
         f, g, estado_atual, caminho, caminho_estados = prioridade.heappop(fila_prioridade) 
