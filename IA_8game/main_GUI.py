@@ -49,17 +49,6 @@ class MainGUI:
                 e.grid(row=i, column=j, padx=4, pady=4)
                 self.tabuleiro_entries.append(e)
 
-        # # label informativa
-        # ttk.Label(
-        #     top, text="Digite os números de 0 a 8 (sem repetir, 0 representa o espaço vazio)."
-        # ).pack(side="left", padx=12, pady=4)
-
-        # self.entry_lines = []
-        # for i in range(3):
-        #     e = ttk.Entry(entradas_frame, width=20)
-        #     e.grid(row=i, column=0, padx=6, pady=4)
-        #     self.entry_lines.append(e)
-
         # algoritmo e botões
         control_frame = ttk.Frame(top)
         control_frame.pack(side="top", padx=16)
@@ -124,21 +113,6 @@ class MainGUI:
         estado = [valores[i:i+3] for i in range(0, 9, 3)]
         return estado
 
-
-    # lê estado das entradas
-    # def read_state_from_entries(self):
-    #     try:
-    #         estado = []
-    #         for e in self.entry_lines:
-    #             parts = e.get().strip().split()
-    #             if len(parts) != 3:
-    #                 raise ValueError("Cada linha deve conter 3 números.")
-    #             linha = [int(x) for x in parts]
-    #             estado.append(linha)
-    #         return estado
-    #     except Exception as ex:
-    #         messagebox.showerror("Entrada inválida", f"Formato inválido: {ex}")
-    #         return None
 
     # botão executar
     def on_execute(self):
@@ -215,7 +189,7 @@ class MainGUI:
         self.txt_ordem.insert(tk.END, ordem_text)
 
         # Resumo
-        resumo_text = self.build_resumo_text(analisados, fila, profundidade, caminho, caminho_estados)
+        resumo_text = self.build_resumo_text(niveis, analisados, fila, profundidade, caminho, caminho_estados)
         self.txt_resumo.delete(1.0, tk.END)
         self.txt_resumo.insert(tk.END, resumo_text)
 
@@ -270,11 +244,13 @@ class MainGUI:
                 lines.append("")
         return "\n".join(lines)
 
-    def build_resumo_text(self, analisados, fila, profundidade, caminho, caminho_estados):
+    def build_resumo_text(self, niveis, analisados, fila, profundidade, caminho, caminho_estados):
         lines = []
+        lines.append(f"Quantidade de nós gerados: {analisados+len(fila)}")
         lines.append(f"Estados analisados: {analisados}")
         lines.append(f"Estados na fronteira: {len(fila)}")
         lines.append(f"Profundidade da solução: {profundidade}")
+        lines.append(f"Profundidade máxima atingida: {max(niveis.keys())}")
         lines.append("")
         lines.append("Caminho da solução: " + (" -> ".join(caminho) if caminho else ""))
         lines.append("")
