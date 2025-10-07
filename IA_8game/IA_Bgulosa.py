@@ -42,15 +42,16 @@ def distancia_manhattan(estado):
     return distancia
 
 def busca_gulosa(estado_inicial, objetivo):
+    h_inicial = distancia_manhattan(estado_inicial) # heuristica inicial
     fila_prioridade = []
     # mantém o elemento com menor valor de heuristica sempre no topo.
-    prioridade.heappush(fila_prioridade, (0, 0, estado_inicial, [], [(estado_inicial, 0)])) # (heuristica, profundidade, estado, caminho_gerado, caminho_estados)
+    prioridade.heappush(fila_prioridade, (h_inicial, 0, estado_inicial, [], [(estado_inicial, 0)])) # (heuristica, profundidade, estado, caminho_gerado, caminho_estados)
     visitado = set()
     estados_analisados = 0
     ordem_exploracao = [] # guarda a ordem de busca da BuscaGulosa
 
     niveis = defaultdict(list)  # Armazena os estados por nível
-    niveis[0].append((estado_inicial, 0))
+    niveis[0].append((estado_inicial, h_inicial))
 
     while fila_prioridade:
         heuristica, profundidade, estado_atual, caminho, caminho_estados = prioridade.heappop(fila_prioridade)

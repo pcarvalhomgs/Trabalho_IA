@@ -42,16 +42,17 @@ def distancia_manhattan(estado):
     return distancia
 
 def a_estrela(estado_inicial, objetivo):
+    f_inicial = distancia_manhattan(estado_inicial) # f=(h+g(0))
     fila_prioridade = []
     # (f(g+h), g(profundidade_custo do caminho), estado, caminho_gerado, caminho_estados)
-    prioridade.heappush(fila_prioridade, (0, 0, estado_inicial, [], [(estado_inicial, 0)])) 
+    prioridade.heappush(fila_prioridade, (f_inicial, 0, estado_inicial, [], [(estado_inicial, 0)])) 
     visitados = set()
     visitados.add(tuple(map(tuple, estado_inicial)))
     estados_analisados = 0
     ordem_exploracao = [] # guarda a ordem de busca da BuscaGulosa
 
     niveis = defaultdict(list)  # Armazena os estados por nível
-    niveis[0].append((estado_inicial, 0))
+    niveis[0].append((estado_inicial, f_inicial))
 
     while fila_prioridade:
         f, g, estado_atual, caminho, caminho_estados = prioridade.heappop(fila_prioridade) 
