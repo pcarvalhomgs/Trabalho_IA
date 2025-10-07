@@ -31,12 +31,12 @@ def descobre_possibilidades(estado):
     return possibilidades
 
 def busca_profundidade(estado_inicial, objetivo):
-    pilha = [(estado_inicial, 0, [], [(estado_inicial, 0)])] # estado_inicial, profundidade, caminho_gerado, caminho_estados
-    visitado = set()
+    pilha = [(estado_inicial, 0, [], [(estado_inicial, 0)])]  # estado, profundidade, caminho, caminho_estados
+    visitado = {tuple(map(tuple, estado_inicial))}
     estados_analisados = 0
-    ordem_exploracao = [] # guarda a ordem de busca da DFS
+    ordem_exploracao = []
 
-    niveis = defaultdict(list)  # Armazena os estados por nível
+    niveis = defaultdict(list)
     niveis[0].append(estado_inicial)
 
     while pilha:
@@ -46,11 +46,12 @@ def busca_profundidade(estado_inicial, objetivo):
 
         if verifica(estado_atual, objetivo):
             return niveis, ordem_exploracao, estados_analisados, pilha, profundidade, caminho, caminho_estados
-        
-        visitado.add(tuple(map(tuple, estado_atual)))
+
         for possibilidade, movimento in descobre_possibilidades(estado_atual):
-            if tuple(map(tuple, possibilidade)) not in visitado:
+            estado_tupla = tuple(map(tuple, possibilidade))
+            if estado_tupla not in visitado:
+                visitado.add(estado_tupla)  # marca como visitado no momento da inserção
                 pilha.append((possibilidade, profundidade + 1, caminho + [movimento], caminho_estados + [(possibilidade, profundidade + 1)]))
                 niveis[profundidade + 1].append(possibilidade)
 
-    return None # Não encontrou solução
+    return None  # Não encontrou solução
